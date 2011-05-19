@@ -124,11 +124,9 @@ class Chef
         if ui.interchange?
           output({:results => result_count, :rows => result_items})
         else
-          ui.msg "#{result_count} items found"
-          ui.msg("\n")
+          ui.msg "#{result_count} items found\n" unless config[:format] == "text" && config[:id_only]
           result_items.each do |item|
             output(item)
-            ui.msg("\n")
           end
         end
       end
